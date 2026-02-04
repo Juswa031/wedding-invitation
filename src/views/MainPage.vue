@@ -8,8 +8,7 @@ import DresscodeComponent from '@/components/DresscodeComponent.vue';
 import NotesComponent from '@/components/NotesComponent.vue';
 import RSVPComponent from '@/components/RSVPComponent.vue';
 
-// --- MUSIC LOGIC ---
-const isPlaying = ref(false);
+const isPlaying = ref(true); 
 const audioPlayer = ref(null);
 
 const toggleMusic = () => {
@@ -24,19 +23,28 @@ const toggleMusic = () => {
 
 onMounted(() => {
   const startAudio = () => {
-    if (audioPlayer.value && !isPlaying.value) {
+    if (audioPlayer.value) {
       audioPlayer.value.play()
         .then(() => {
+          // Kapag nag-play na, siguraduhing true ang state
           isPlaying.value = true;
+          // Tanggalin ang listeners para hindi na paulit-ulit tumakbo
           window.removeEventListener('click', startAudio);
           window.removeEventListener('scroll', startAudio);
+          window.removeEventListener('touchstart', startAudio);
         })
-        .catch(() => console.log("Waiting for interaction..."));
+        .catch(() => {
+          // Kung hinarang ng browser, mananatiling "not playing" ang audio
+          // pero ang icon ay naka-play state na para sa user
+          console.log("Waiting for user interaction to unmute...");
+        });
     }
   };
 
+  // Makikinig sa kahit anong galaw ng user para i-trigger ang kanta
   window.addEventListener('click', startAudio);
   window.addEventListener('scroll', startAudio, { passive: true });
+  window.addEventListener('touchstart', startAudio);
 });
 </script>
 
@@ -45,10 +53,9 @@ onMounted(() => {
     <button 
       class="music-fab" 
       @click="toggleMusic" 
-      :aria-label="isPlaying ? 'Mute Music' : 'Play Music'"
     >
       <div class="icon">
-        {{ isPlaying ? '🎶' : '𝇇' }}
+        {{ isPlaying ? '🎶' : '🔇' }}
       </div>
       
       <div v-if="isPlaying" class="waves">
@@ -82,15 +89,8 @@ body, html {
   width: 100%;
   overflow-x: hidden;
   background: #0a0a1a;
-  -webkit-font-smoothing: antialiased;
 }
 
-.main-layout {
-  width: 100%;
-  position: relative;
-}
-
-/* MUSIC BUTTON (FAB) */
 .music-fab {
   position: fixed;
   bottom: 25px;
@@ -107,21 +107,13 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.music-fab:hover {
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 12px 30px rgba(25, 25, 112, 0.3);
-}
-
-.music-fab .icon {
+.icon {
   font-size: 1.4rem;
-  line-height: 1;
-  color: #191970; /* Midnight Blue */
+  color: #191970;
 }
 
-/* Equalizer Waves Animation */
 .waves {
   display: flex;
   align-items: flex-end;
@@ -133,27 +125,11 @@ body, html {
 .waves span {
   width: 3px;
   background: #191970;
-  border-radius: 2px;
   animation: musicWave 0.8s infinite alternate;
 }
-
-.waves span:nth-child(1) { height: 60%; animation-delay: 0.1s; }
-.waves span:nth-child(2) { height: 100%; animation-delay: 0.3s; }
-.waves span:nth-child(3) { height: 80%; animation-delay: 0.5s; }
 
 @keyframes musicWave {
   from { height: 20%; transform: scaleY(0.5); }
   to { height: 100%; transform: scaleY(1); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-  .music-fab {
-    bottom: 20px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-  }
-  .music-fab .icon { font-size: 1.2rem; }
 }
 </style>

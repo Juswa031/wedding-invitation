@@ -43,11 +43,11 @@
 defineProps({
   backgroundImage: { 
     type: String, 
-    default: 'https://images.unsplash.com/photo-1519741497674-611481863552' 
+    default: 'https://lh3.googleusercontent.com/d/18QcWBk14uPF2ddye00X2nKepr5vlPFt8'
   },
   coupleImage: { 
     type: String, 
-    default: 'https://drive.google.com/drive/folders/1Lyk-3-cNKSEHWFgtOgXpFjNicMHSWBiE' 
+    default: 'https://lh3.googleusercontent.com/u/0/d/1pdGwqdfFkXeNuYTHliatjpWqBpeQDDTK' 
   }
 });
 </script>

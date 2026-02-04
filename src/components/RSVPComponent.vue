@@ -170,7 +170,7 @@ const submitRSVP = async () => {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(10, 10, 26, 0.85), rgba(10, 10, 26, 0.85)), 
-                    url('https://images.unsplash.com/photo-1519741497674-611481863552');
+                    url('https://lh3.googleusercontent.com/d/1VZxxtSl3TZaUDno4NSfFXfvU47uzFevF');
   background-size: cover;
   background-position: center;
 }

@@ -36,7 +36,7 @@
         </div>
 
         <div class="divider"></div>
-        <p class="details">Hanggang sa aming pag-iisang dibdib sa Antipolo.</p>
+        <p class="details">Hanggang sa aming pag-iisang dibdib.</p>
       </div>
     </section>
   </div>
@@ -48,7 +48,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 const props = defineProps({
   backgroundImage: { 
     type: String, 
-    default: 'https://images.unsplash.com/photo-1519741497674-611481863552' 
+    default: 'https://lh3.googleusercontent.com/d/1JhsJLPulsX2LMyGEvIqrcu74of4Btt4Q'
   },
   targetDate: {
     type: String,

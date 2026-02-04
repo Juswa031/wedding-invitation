@@ -76,7 +76,7 @@
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
-                    url('https://images.unsplash.com/photo-1519741497674-611481863552');
+                    url('https://lh3.googleusercontent.com/d/13_juiul0qGmLUKDDFFjGCQdGR7Lf8bvl');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

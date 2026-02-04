@@ -32,7 +32,7 @@
 defineProps({
   calendarImage: { 
     type: String, 
-    default: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a' 
+    default: 'https://lh3.googleusercontent.com/d/1EelY78yRGSWeuI3FxOxuz5VtO7YRGc7q'
   }
 });
 </script>
@@ -57,7 +57,7 @@ defineProps({
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
-                    url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622');
+                    url('https://lh3.googleusercontent.com/d/1tbYyXXlQgwF3tFNbDzoRout4MpdRrSkw');
   background-size: cover;
   background-position: center;
   z-index: 1;
