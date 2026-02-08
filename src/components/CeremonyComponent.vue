@@ -13,7 +13,7 @@
         
         <div class="venue-row top-row">
           <div class="image-frame">
-            <img :src="ceremonyImage" alt="Ang Seremonya" class="venue-img" />
+            <img :src="'/public/images/church.jpg'" alt="Ang Seremonya" class="venue-img" />
           </div>
 
           <div class="content-box polaroid-style right-overlap">
@@ -57,7 +57,7 @@
           </div>
 
           <div class="image-frame">
-            <img :src="receptionImage" alt="Ang Resepsyon" class="venue-img" />
+            <img :src="'/public/images/reception.jpg'" alt="Ang Resepsyon" class="venue-img" />
           </div>
         </div>
 
@@ -70,11 +70,11 @@
 defineProps({
   ceremonyImage: { 
     type: String, 
-    default: '/public/images/church.jpg'
+    default: ''
   },
   receptionImage: { 
     type: String, 
-    default: '/public/images/reception.jpg'
+    default: ''
   }
 });
 </script>

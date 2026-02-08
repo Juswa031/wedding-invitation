@@ -48,7 +48,7 @@ onUnmounted(() => {
   <div class="main-layout">
     <SidebarComponent />
 
-    <audio ref="audioRef" :src="audioUrl" loop></audio>
+    <audio ref="audioRef" :src="'/public/audio/wedding-song.mp3'" loop></audio>
 
     <div class="floating-controls">
       <button 
