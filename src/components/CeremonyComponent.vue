@@ -13,7 +13,7 @@
         
         <div class="venue-row top-row">
           <div class="image-frame">
-            <img :src="'/public/images/church.jpg'" alt="Ang Seremonya" class="venue-img" />
+            <img src="https://lh3.googleusercontent.com/u/0/d/1xSvTtXJE5d8u9yocG3nS8M-leIKPXRR3" alt="Ang Seremonya" class="venue-img" />
           </div>
 
           <div class="content-box polaroid-style right-overlap">
@@ -57,7 +57,7 @@
           </div>
 
           <div class="image-frame">
-            <img :src="'/public/images/reception.jpg'" alt="Ang Resepsyon" class="venue-img" />
+            <img src="https://lh3.googleusercontent.com/u/0/d/1LSGpprHZhTUv1cS9SeyPaagPrDvVhaf_" alt="Ang Resepsyon" class="venue-img" />
           </div>
         </div>
 

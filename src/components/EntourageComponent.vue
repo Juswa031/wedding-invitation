@@ -106,7 +106,7 @@ const secondarySponsors = [
   { role: 'Mga Abay sa Belo', names: ['Jenny Salosa', 'Nico Joaquin Ramos'] },
   { role: 'Mga Abay sa Kandila', names: ['Kaycel Marcelo', 'Mark Steven Montañez'] },
   { role: 'Mga Batang Tagasaboy ng Bulaklak', names: ['Jessica Aisha Adeva', 'Hermione Marcelo'] },
-  { role: 'Tagadala ng Bibliya', names: ['Boaz Abiel Bagon'] },
+  { role: 'Tagadala ng Bibliya', names: ['Boaz Adriel Bagon'] },
   { role: 'Tagadala ng Singsing', names: ['Nigel Nico Adeva'] },
   { role: 'Mga Abay na Lalaki', names: ['Jeffrey Neil Santos', 'Miko Adeva', 'Joshua Sandoval'] },
   { role: 'Mga Abay na Babae', names: ['Kristine Mae Maranan', 'Joyce Ann Manzanilla', 'Hannah Tumambing'] }
