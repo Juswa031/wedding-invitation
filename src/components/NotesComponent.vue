@@ -63,7 +63,7 @@
 .background-overlay {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(10, 10, 26, 0.92), rgba(10, 10, 26, 0.92)), 
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(10, 10, 26, 0.9)), 
                     url('https://lh3.googleusercontent.com/d/1tBmoGDORhfJQPf2Rx4s3_QjJ5g1ayseC');
   background-size: cover;
   background-position: center;

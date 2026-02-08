@@ -4,55 +4,63 @@
 
     <div class="solid-white-card">
       <div class="header-group">
-        <span class="script-label">Ang Lokasyon</span>
+        <span class="script-label adelia-font">Ang Lokasyon</span>
         <h2 class="main-title">Saan at Kailan</h2>
         <div class="title-underline"></div>
       </div>
 
-      <div class="venue-flex">
-        <div class="venue-panel">
+      <div class="venue-container">
+        
+        <div class="venue-row top-row">
           <div class="image-frame">
-            <img :src="ceremonyImage" alt="Jardin de Miramar Estacion" class="venue-img" />
-            <div class="frame-overlay"></div>
+            <img :src="ceremonyImage" alt="Ang Seremonya" class="venue-img" />
           </div>
-          
-          <div class="content-box">
+
+          <div class="content-box polaroid-style right-overlap">
+            <div class="polaroid-image-inner">
+              <img :src="'https://jardindemiramareventsvenue.com/jardindemiramareventsvenue/wp-content/uploads/2024/02/Artboard-4.png'" alt="Ang Seremonya" />
+            </div>
+
             <span class="venue-tag">Ang Seremonya</span>
             <h3 class="location-name">Jardin de Miramar</h3>
-            <p class="garden-name">Estacion Garden</p>
+            <p class="garden-name adelia-font">Estacion Garden</p>
             
             <div class="details-group">
               <p class="detail-item time">Ika-tatlo ng hapon</p>
-              <p class="detail-item address">Buliran Rd, Brgy. San Isidro, Antipolo City</p>
+              <p class="detail-item address">Antipolo City</p>
             </div>
             
-            <a href="https://maps.google.com/?q=Jardin+de+Miramar" target="_blank" class="blue-button">
-              Tingnan sa Mapa
+            <a href="https://maps.google.com" target="_blank" class="navy-button">
+              Mapa
             </a>
           </div>
         </div>
 
-        <div class="venue-panel featured">
-          <div class="image-frame">
-            <img :src="receptionImage" alt="Jardin de Miramar Reception" class="venue-img" />
-            <div class="frame-overlay"></div>
-          </div>
-          
-          <div class="content-box">
-            <span class="venue-tag active-blue">Ang Resepsyon</span>
+        <div class="venue-row bottom-row">
+          <div class="content-box polaroid-style left-overlap">
+            <div class="polaroid-image-inner">
+              <img :src="'https://jardindemiramareventsvenue.com/jardindemiramareventsvenue/wp-content/uploads/2024/02/Artboard-2.png'" alt="Ang Resepsyon" />
+            </div>
+
+            <span class="venue-tag">Ang Resepsyon</span>
             <h3 class="location-name">Jardin de Miramar</h3>
-            <p class="garden-name">Reception Hall</p>
+            <p class="garden-name adelia-font">Reception Hall</p>
             
             <div class="details-group">
-              <p class="detail-item time">Susunod agad pagkatapos</p>
-              <p class="detail-item address">Buliran Rd, Brgy. San Isidro, Antipolo City</p>
+              <p class="detail-item time">Susunod agad</p>
+              <p class="detail-item address">Antipolo City</p>
             </div>
             
-            <a href="https://maps.google.com/?q=Jardin+de+Miramar" target="_blank" class="blue-button filled">
-              Tingnan sa Mapa
+            <a href="https://maps.google.com" target="_blank" class="navy-button filled">
+              Mapa
             </a>
           </div>
+
+          <div class="image-frame">
+            <img :src="receptionImage" alt="Ang Resepsyon" class="venue-img" />
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -62,159 +70,129 @@
 defineProps({
   ceremonyImage: { 
     type: String, 
-    default: 'https://jardindemiramareventsvenue.com/jardindemiramareventsvenue/wp-content/uploads/2024/02/Artboard-4.png'
+    default: '/public/images/church.jpg'
   },
   receptionImage: { 
     type: String, 
-    default: 'https://jardindemiramareventsvenue.com/jardindemiramareventsvenue/wp-content/uploads/2024/02/Artboard-2.png'
+    default: '/public/images/reception.jpg'
   }
 });
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+@font-face {
+  font-family: 'Adelia';
+  src: url('/public/fonts/adelia.ttf') format('truetype');
+}
+
+.adelia-font { font-family: 'Adelia', cursive !important; }
 
 .venue-section {
   position: relative;
-  padding: 100px 20px;
+  padding: 40px 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: #0a0a1a;
-  min-height: 100vh;
-  overflow: hidden;
+  background: #fdfbf7;
 }
 
-.background-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
-                    url('https://lh3.googleusercontent.com/d/1y8bLvac8b6IRjoz4W_UhGEXBQ8cSGdII');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-/* SOLID WHITE CARD STYLE */
 .solid-white-card {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 1100px;
   width: 100%;
   background: #ffffff;
-  padding: 60px 40px;
-  border-radius: 12px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  padding: 40px 10px;
 }
 
-.header-group { text-align: center; margin-bottom: 50px; }
-.script-label { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #191970; }
+.header-group { text-align: center; margin-bottom: 40px; }
 .main-title { 
   font-family: 'Playfair Display', serif; 
-  color: #1c2833; 
-  font-size: 2.5rem; 
-  letter-spacing: 4px; 
+  font-size: clamp(1.3rem, 5vw, 2.5rem); 
+  letter-spacing: 2px; 
+  color: #001f3f;
   text-transform: uppercase;
-  margin-top: 5px;
 }
-.title-underline {
-  width: 60px; height: 1px; background: #191970; margin: 15px auto;
+.title-underline { width: 40px; height: 1.5px; background: #001f3f; margin: 10px auto; }
+
+.venue-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.venue-flex { display: flex; gap: 40px; }
-.venue-panel { 
-  flex: 1; 
+/* --- OVERLAP LAYOUT (Mobile & Desktop) --- */
+.venue-row { 
   display: flex; 
-  flex-direction: column; 
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  align-items: center; 
+  position: relative; 
+  width: 100%; 
 }
 
 .image-frame {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  border-radius: 6px;
+  flex: 0 0 62%; /* Controls the large background image width */
+  height: clamp(180px, 35vw, 420px);
   overflow: hidden;
-  margin-bottom: 25px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 1;
 }
 
-.venue-img { 
-  width: 100%; height: 100%; object-fit: cover; 
-  transition: transform 0.8s ease;
+.venue-img { width: 100%; height: 100%; object-fit: cover; }
+
+.polaroid-style {
+  flex: 0 0 52%; /* Controls the overlapping box width */
+  background: #ffffff;
+  padding: 8px 8px 25px 8px; 
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 31, 63, 0.12);
+  border: 1px solid #e2e8f0;
 }
 
-.image-frame:hover .venue-img { transform: scale(1.08); }
+/* Overlap margins - stays active on mobile */
+.right-overlap { margin-left: -15%; }
+.left-overlap { margin-right: -15%; text-align: right; }
 
-.content-box { text-align: center; padding-bottom: 10px; }
-.venue-tag {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #64748b;
-  display: block;
+.polaroid-image-inner {
+  width: 100%;
+  height: clamp(75px, 18vw, 200px);
+  overflow: hidden;
   margin-bottom: 10px;
+  background: #f0f0f0;
 }
-.venue-tag.active-blue { color: #191970; font-weight: 600; }
+.polaroid-image-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-.location-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  color: #1c2833;
-  margin-bottom: 2px;
-}
+/* Typography Scaling */
+.venue-tag { font-family: 'Montserrat'; font-size: 0.5rem; letter-spacing: 1px; color: #64748b; text-transform: uppercase; display: block; }
+.location-name { font-family: 'Playfair Display'; font-size: clamp(0.8rem, 3vw, 1.8rem); color: #001f3f; line-height: 1.2; }
+.garden-name { font-size: clamp(0.75rem, 3vw, 1.6rem); color: #003366; margin-bottom: 8px; }
+.detail-item { font-family: 'Montserrat'; font-size: 0.6rem; color: #1e293b; line-height: 1.3; }
 
-.garden-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.6rem;
-  color: #191970;
-  margin-bottom: 20px;
-}
-
-.details-group { margin-bottom: 25px; }
-.detail-item {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: #475569;
-  line-height: 1.6;
-}
-.detail-item.time { font-weight: 600; color: #191970; margin-bottom: 5px; }
-
-/* UPDATED BUTTONS */
-.blue-button {
+.navy-button {
   display: inline-block;
-  padding: 12px 25px;
-  border: 1px solid #191970;
-  color: #191970;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border: 1px solid #001f3f;
+  color: #001f3f;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.55rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 4px;
-  transition: all 0.3s;
 }
+.navy-button.filled { background: #001f3f; color: white; }
 
-.blue-button:hover {
-  background: #f1f5f9;
-  transform: translateY(-2px);
-}
-
-.blue-button.filled {
-  background: #191970;
-  color: #fff;
-}
-
-.blue-button.filled:hover {
-  background: #000040;
-}
-
-@media (max-width: 850px) {
-  .venue-flex { flex-direction: column; gap: 30px; }
-  .solid-white-card { padding: 40px 20px; }
-  .image-frame { height: 200px; }
+/* DESKTOP ENHANCEMENTS */
+@media (min-width: 850px) {
+  .venue-section { padding: 80px 20px; }
+  .solid-white-card { padding: 80px 60px; }
+  .venue-container { gap: 100px; }
+  .polaroid-style { flex: 0 0 42%; padding: 25px 25px 50px 25px; }
+  .right-overlap { margin-left: -10%; }
+  .left-overlap { margin-right: -10%; }
+  .polaroid-image-inner { height: 200px; margin-bottom: 20px; }
+  .detail-item { font-size: 0.9rem; }
+  .navy-button { font-size: 0.7rem; padding: 10px 25px; }
 }
 </style>

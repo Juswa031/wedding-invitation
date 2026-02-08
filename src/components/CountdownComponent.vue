@@ -10,7 +10,7 @@
       </div>
 
       <div class="countdown-card">
-        <span class="label">Sama-sama nating bilangin ang mga araw</span>
+        <!-- <span class="label">Sama-sama nating bilangin ang mga araw</span> -->
         <h2 class="section-title">Ang Paghihintay ay Matatapos na</h2>
         
         <div class="timer-display">
@@ -48,7 +48,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 const props = defineProps({
   backgroundImage: { 
     type: String, 
-    default: 'https://lh3.googleusercontent.com/d/1JhsJLPulsX2LMyGEvIqrcu74of4Btt4Q'
+    default: 'https://lh3.googleusercontent.com/d/1AT5CcNCa9trvrKSdBy0RB2f3eLVG_7kk'
   },
   targetDate: {
     type: String,
@@ -111,7 +111,7 @@ onUnmounted(() => {
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(6px) brightness(0.4);
+  filter: blur(5px);
 }
 
 .romantic-overlay {
@@ -125,18 +125,18 @@ onUnmounted(() => {
   z-index: 10;
   width: 100%;
   max-width: 800px;
-  background: #ffffff;
+  background: transparent;
   padding: 60px 30px;
   text-align: center;
   border-radius: 12px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
+  /* box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); */
+  /* box-sizing: border-box; */
 }
 
 .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  color: #1c2833;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #ffffff;
   margin: 15px 0 40px;
   line-height: 1.2;
 }
@@ -145,8 +145,8 @@ onUnmounted(() => {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-size: 0.7rem;
-  color: #64748b;
+  font-size: 1rem;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -162,19 +162,19 @@ onUnmounted(() => {
 .time-block {
   display: flex;
   flex-direction: column;
-  background: #f8fafc;
+  background: transparent;
   padding: 20px;
   min-width: 100px;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  /* border: 1px solid #e2e8f0; */
   flex: 1; /* Allows blocks to grow/shrink equally */
   max-width: 140px;
 }
 
 .number {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: #191970;
+  font-size: clamp(2rem, 6vw, 6rem);
+  color: #ffffff;
   font-weight: 700;
   line-height: 1;
 }
@@ -184,7 +184,7 @@ onUnmounted(() => {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #64748b;
+  color: #ffffff;
   margin-top: 8px;
 }
 
@@ -198,8 +198,8 @@ onUnmounted(() => {
 
 .details {
   font-family: 'Montserrat', sans-serif;
-  color: #475569;
-  font-size: 0.9rem;
+  color: #ffffff;
+  font-size: 2rem;
   line-height: 1.6;
 }
 

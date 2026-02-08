@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-signature: 'Allura', cursive;
+  --font-elegant: 'Cormorant Garamond', serif;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titles use elegant signature font */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-signature);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 5.5vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 4vw, 2rem); }
+h4 { font-size: clamp(1.1rem, 3.5vw, 1.5rem); }
+h5 { font-size: 1.1rem; }
+
+/* Script/signature elements */
+.script-name, .great-vibes, .first-name, .last-name {
+  font-family: var(--font-signature);
+  font-size: 1.2em;
+}
+
+/* Buttons and UI use clean sans */
+button, input, textarea, select {
+  font-family: var(--font-sans);
+}
+
+/* Body content - clean Montserrat */
+p, li, span, a {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* Utility class for elegant accents */
+.elegant { font-family: var(--font-elegant); }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+

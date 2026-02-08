@@ -1,28 +1,65 @@
 <template>
-  <section class="calendar-section">
-    <div class="background-overlay"></div>
-
-    <div class="calendar-card">
-      <div class="image-side">
-        <img :src="calendarImage" alt="Wedding Couple" />
-        <div class="gradient-edge"></div>
+  <section class="calendar-wedding-section">
+    <div class="banner-container">
+      <div 
+        class="banner-img" 
+        :style="{ backgroundImage: `url(${calendarImage})` }"
+      >
       </div>
+    </div>
 
-      <div class="calendar-side">
-        <div class="calendar-content">
+    <div class="bible-verse-section">
+      <div class="verse-wrapper">
+        <p class="verse-text adelia-font">"Mananatili ang pag-ibig, ang pag-asa, at ang pananampalataya; ngunit ang pinakamalaki sa mga ito ay ang pag-ibig."</p>
+        <p class="verse-reference">1 Corinto 13:13</p>
+      </div>
+    </div>
+
+    <div class="video-teaser-section">
+      <div class="video-container">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=315&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1400101321252561%2F&show_text=false&width=560&t=0" 
+          width="560" 
+          height="315" 
+          style="border:none; overflow:hidden" 
+          scrolling="no" 
+          frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        ></iframe>
+      </div>
+      <p class="video-caption adelia-font">Panoorin ang aming kwento</p>
+    </div>
+
+    <div class="calendar-invitation-area">
+      <div class="card-container">
+        
+        <div class="polaroid-wrapper">
+          <div class="polaroid">
+            <img :src="bannerImage" alt="Couple" />
+            <div class="polaroid-date">02 . 14 . 26</div> </div>
+        </div>
+
+        <div class="calendar-details">
+          <p class="invite-label adelia-font">I-SAVE ANG PETSA</p>
           <h3 class="month-year">Pebrero 2026</h3>
           
+          <div class="gold-line"></div>
+
           <div class="days-grid">
-            <span class="day-label" v-for="label in ['L','M','M','H','B','S','L']" :key="label">{{ label }}</span>
-            <span class="date empty"></span><span class="date empty"></span><span class="date empty"></span>
-            <span class="date empty"></span><span class="date empty"></span><span class="date empty"></span>
-            <span class="date" v-for="n in 28" :key="n" :class="{ 'highlighted': n === 24 }">
+            <span class="day-label" v-for="label in ['S','M','T','W','T','F','S']" :key="label">
+              {{ label }}
+            </span>
+            
+            <span class="date" v-for="n in 28" :key="n" :class="{ 'highlighted': n === 14 }">
               {{ n }}
+              <div v-if="n === 14" class="heart-marker">♥</div>
             </span>
           </div>
 
-          <p class="tagline">I-save ang petsa sa inyong mga puso.</p>
+          <p class="marriage-status">SA AMING PAG-IISANG DIBDIB</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -32,153 +69,239 @@
 defineProps({
   calendarImage: { 
     type: String, 
-    default: 'https://lh3.googleusercontent.com/d/1EelY78yRGSWeuI3FxOxuz5VtO7YRGc7q'
+    default: 'https://lh3.googleusercontent.com/d/1UD0y4_y7XoimuBJgz8Pt4c8dVwC71EF-'
+  },
+  bannerImage: {
+    type: String,
+    default: 'https://lh3.googleusercontent.com/d/1tbYyXXlQgwF3tFNbDzoRout4MpdRrSkw'
   }
 });
 </script>
 
 <style scoped>
-/* Reset for this specific section only to ensure no scroll */
-.calendar-section {
-  position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+/* --- FONT FACE --- */
+@font-face {
+  font-family: 'Adelia';
+  src: url('/public/fonts/adelia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.adelia-font {
+  font-family: 'Adelia', cursive !important;
+}
+
+.calendar-wedding-section {
   width: 100%;
-  height: 100vh; /* Fixed height to match viewport */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #0a0a1a;
-  padding: 0;
-  margin: 0;
-  overflow: hidden; /* This removes the scrollbar for this section */
-  box-sizing: border-box;
+  background: #fdfbf7; 
 }
 
-.background-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
-                    url('https://lh3.googleusercontent.com/d/1tbYyXXlQgwF3tFNbDzoRout4MpdRrSkw');
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
-
-.calendar-card {
+/* --- BANNER --- */
+.banner-container {
+  width: 100%;
+  height: 50vh;
   position: relative;
-  z-index: 2;
-  display: flex;
-  width: 90%;
-  max-width: 900px;
-  height: auto;
-  max-height: 90vh; /* Ensures card doesn't exceed screen height */
-  background: #ffffff;
-  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
-.image-side {
-  flex: 1.2;
-  position: relative;
-  display: block;
-}
-
-.image-side img {
+.banner-img {
   width: 100%;
   height: 100%;
+  background-size: cover;
+  background-position: center 25%;
+  filter: brightness(1.15) contrast(0.95);
+}
+
+/* --- VERSE --- */
+.bible-verse-section {
+  width: 100%;
+  padding: 60px 20px 20px 20px;
+  text-align: center;
+}
+
+.verse-text {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.verse-reference {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #8e8e8e;
+  text-transform: uppercase;
+}
+
+/* --- VIDEO STYLES --- */
+.video-teaser-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  /* Kinokontrol ang aspect ratio para sa responsive video */
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-caption {
+  margin-top: 20px;
+  color: #191970;
+  font-size: 1.2rem;
+}
+
+/* --- CALENDAR --- */
+.calendar-invitation-area {
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.polaroid-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.polaroid {
+  background: white;
+  padding: 15px 15px 50px 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-.gradient-edge {
-  position: absolute;
-  top: 0; right: 0; bottom: 0;
-  width: 80px;
-  background: linear-gradient(to right, transparent, #ffffff);
-}
-
-.calendar-side {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+.polaroid-date {
+  font-family: 'Playfair Display', serif;
+  margin-top: 15px;
   color: #191970;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.calendar-content { width: 100%; }
+.calendar-details {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;   
+}
+
+.invite-label {
+  letter-spacing: 4px;
+  font-size: 1.2rem;
+  color: #8e8e8e;
+  margin-bottom: 5px;
+}
 
 .month-year {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.4rem, 4vw, 1.8rem);
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: 700;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 15px 0 0 0;
+}
+
+.gold-line {
+  height: 2px;
+  width: 60px;
+  background: #d4af37;
+  margin: 20px 0;
 }
 
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  text-align: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 350px;
   font-family: 'Montserrat', sans-serif;
+  margin: 0 auto; 
 }
 
 .day-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #64748b;
-  margin-bottom: 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #d4af37;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .date {
-  font-size: 0.85rem;
-  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #444;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 1;
+  position: relative;
 }
 
 .date.highlighted {
   background: #191970;
-  color: #ffffff;
+  color: white;
   border-radius: 50%;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-.tagline {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  margin-top: 25px;
-  text-align: center;
-  color: #191970;
+.heart-marker {
+  position: absolute;
+  top: -12px;
+  color: #d4af37;
+  font-size: 1.1rem;
 }
 
-/* RESPONSIVE FIXES */
-@media (max-width: 768px) {
-  .calendar-card {
+.marriage-status {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: #7d7d7d;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 850px) {
+  .card-container {
     flex-direction: column;
-    max-width: 350px;
-    max-height: 85vh;
+    text-align: center;
+    gap: 40px;
   }
-  .image-side {
-    height: 200px;
-    flex: none;
-  }
-  .gradient-edge {
-    width: 100%;
-    height: 40px;
-    top: auto;
-    background: linear-gradient(to bottom, transparent, #ffffff);
-  }
-  .calendar-side {
-    padding: 1.5rem;
-  }
-}
-
-/* Super Small Screens */
-@media (max-height: 600px) {
-  .calendar-card { transform: scale(0.9); }
-  .month-year { margin-bottom: 10px; }
+  .polaroid-wrapper { justify-content: center; }
+  .verse-text { font-size: 1.2rem; }
+  .video-container { width: 100%; }
 }
 </style>

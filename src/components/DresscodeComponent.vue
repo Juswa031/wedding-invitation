@@ -1,244 +1,211 @@
 <template>
-  <section class="dress-code-section">
-    <div class="background-overlay"></div>
-
-    <div class="solid-white-card">
-      <div class="header-group">
-        <span class="script-label">Gabay sa Kasuotan</span>
-        <h2 class="main-title">Dress Code</h2>
-        <div class="title-underline"></div>
+  <section class="dress-code-hero-layout">
+    <div class="banner-container">
+      <div 
+        class="banner-img" 
+        :style="{ backgroundImage: `url(${calendarImage})` }"
+      >
+        <div class="banner-overlay"></div>
       </div>
+    </div>
 
-      <div class="attire-flex">
-        <div class="attire-panel">
-          <div class="panel-content">
-            <div class="text-top">
+    <div class="card-overlap-area">
+      <div class="solid-white-card">
+        
+        <div class="header-group">
+          <span class="banner-script adelia-font">Gabay sa Kasuotan</span>
+          <h2 class="sub-title">Klasiko at Elegante</h2>
+          <div class="title-underline"></div>
+          <p class="sub-title-spacing">PORMAL AT SEMI-PORMAL</p>
+        </div>
+
+        <div class="palette-section">
+          <div class="shade-alignment-wrapper">
+            <span class="shade-label">Paleta ng mga Kulay</span>
+            <div class="circle-palette">
+              <div 
+                v-for="color in navyPalette" 
+                :key="color" 
+                class="color-circle" 
+                :style="{ backgroundColor: color }"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <div class="unified-attire-container">
+          
+          <div class="side-illustration side-left">
+            <div class="illustration-box">
+              <img src="/public/images/female-formal.png" alt="Kasuotang Pambabae" class="art-img big-display" />
+            </div>
+          </div>
+
+          <div class="central-content">
+            <div class="info-block">
+              <h3 class="role-title">Mga Pangunahing Saksi</h3>
+              <br/>
+              <p class="role-desc">Ninong at Ninang</p>
+              <p class="value-text">Pormal na Kasuotan</p>
+            </div>
+
+            <div class="info-block">
               <h3 class="role-title">Mga Panauhin</h3>
-              <span class="style-tag">Semi-Pormal na Kasuotan</span>
-              <p class="description">
-                Inaanyayahan ang lahat na magsuot ng kahit anong shade ng 
-                <strong>Midnight Blue</strong> o <strong>Navy Blue</strong>.
-              </p>
-            </div>
-            
-            <div class="shade-alignment-wrapper">
-              <div class="shade-container">
-                <span class="shade-label">Guest Color Palette</span>
-                <div class="gradient-bar blue-range"></div>
+              <br/>
+              <div class="message-box">
+                <p class="description">
+                  Hinihiling po namin ang inyong pakikiisa sa pagsusuot ng kahit anong shade ng 
+                  <br><strong class="navy-accent">Midnight Blue</strong> o <strong class="navy-accent">Navy Blue</strong>.
+                </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="attire-panel featured-panel">
-          <div class="panel-content">
-            <div class="text-top">
-              <h3 class="role-title">Ninong at Ninang</h3>
-              <span class="style-tag primary-blue">Pormal na Kasuotan</span>
-              <p class="description">
-                Hinihiling po namin ang inyong pakikiisa sa pagsusuot ng kahit anong shade ng 
-                <strong>Midnight Blue</strong> o ng mga kulay sa ibaba:
-              </p>
-            </div>
-            
-            <div class="shade-alignment-wrapper">
-              <div class="shade-container">
-                <span class="shade-label">Principal Sponsor Palette</span>
-                <div class="gradient-bar custom-to-midnight"></div>
-              </div>
+          <div class="side-illustration side-right">
+            <div class="illustration-box">
+              <img src="/public/images/male-formal.webp" alt="Kasuotang Panlalaki" class="art-img big-display" />
             </div>
           </div>
         </div>
       </div>
-
-      <p class="thank-you-note">
-        Salamat sa inyong pag-unawa at pakikiisa sa aming espesyal na araw.
-      </p>
     </div>
   </section>
 </template>
 
+<script setup>
+import { ref } from 'vue';
+
+defineProps({
+  calendarImage: { 
+    type: String, 
+    default: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070'
+  }
+});
+
+const navyPalette = ref([
+  '#b0c4de', '#4682b4', '#191970', '#000080', '#05051a'
+]);
+</script>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
 
-.dress-code-section {
+@font-face {
+  font-family: 'Adelia';
+  src: url('/public/fonts/adelia.ttf') format('truetype');
+}
+
+.adelia-font { font-family: 'Adelia', cursive !important; }
+
+.dress-code-hero-layout {
+  width: 100%;
+  background: #fdfbf7;
+  padding-bottom: 40px;
+  overflow: hidden; /* Prevents horizontal scroll from large images */
+}
+
+.banner-container {
+  width: 100%;
+  height: 40vh;
   position: relative;
-  padding: 100px 20px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-overlap-area {
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.solid-white-card {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  background: #ffffff;
+  padding: 40px 10px;
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 31, 63, 0.1);
+}
+
+.header-group { text-align: center; margin-bottom: 20px; }
+.banner-script { font-size: clamp(1.8rem, 8vw, 2.5rem); color: #191970; }
+.sub-title { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 5vw, 2rem); letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; }
+.title-underline { width: 40px; height: 3px; background: #191970; margin: 10px auto; }
+
+.palette-section { margin-bottom: 20px; text-align: center; }
+.circle-palette { display: flex; justify-content: center; gap: 8px; }
+.color-circle { width: 35px; height: 35px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+.section-divider { border: 0; border-top: 1px solid #edf2f7; margin: 30px 0; }
+
+/* THE BIGGER SIDE-BY-SIDE LAYOUT */
+.unified-attire-container {
+  display: flex;
+  flex-direction: row !important; /* Persistent side-by-side */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+
+.side-illustration {
+  flex: 1.8; /* Increased flex to make images bigger */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0a0a1a;
-  overflow: hidden;
-  min-height: 100vh;
+  z-index: 1;
 }
 
-.background-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
-                    url('https://lh3.googleusercontent.com/d/13_juiul0qGmLUKDDFFjGCQdGR7Lf8bvl');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
+.side-left { margin-left: -40px; } /* Pulls image more into the view */
+.side-right { margin-right: -40px; }
 
-/* SOLID WHITE CARD STYLE */
-.solid-white-card {
-  position: relative;
-  z-index: 2;
-  max-width: 950px;
+.art-img.big-display {
   width: 100%;
-  background: #ffffff; /* Solid White */
-  padding: 60px 40px;
-  border-radius: 12px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-}
-
-.header-group {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.script-label {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  color: #191970; /* Midnight Blue */
+  max-width: 600px; /* Increased max width */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
   display: block;
+  /* Massive scale that adjusts per screen size */
+  transform: scale(3.5); 
 }
 
-.main-title {
-  font-family: 'Playfair Display', serif;
-  color: #1c2833;
-  font-size: 2.8rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-top: -5px;
-}
-
-.title-underline {
-  width: 60px;
-  height: 1px;
-  background: #191970;
-  margin: 15px auto;
-}
-
-.attire-flex {
-  display: flex;
-  gap: 25px;
-  margin-bottom: 40px;
-  align-items: stretch;
-}
-
-.attire-panel {
-  flex: 1;
-  background: #f8fafc; /* Very light grey background for the inner boxes */
-  border: 1px solid #e2e8f0;
-  padding: 40px 30px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.featured-panel {
-  border-top: 4px solid #191970; /* Diin para sa Sponsors */
-}
-
-.panel-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.central-content {
+  flex: 2; /* Gives text space without being squashed */
   text-align: center;
+  z-index: 5;
+  padding: 0 5px;
 }
 
-.text-top {
-  flex-grow: 1;
+.info-block .role-title { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 4vw, 1.6rem); color: #191970; }
+.description { font-family: 'Montserrat', sans-serif; font-size: clamp(0.75rem, 3vw, 1rem); line-height: 1.6; color: #4a5568; }
+
+/* MOBILE SPECIFIC IMAGE SCALE */
+@media (max-width: 600px) {
+  .art-img.big-display {
+    transform: scale(2.2); /* Slightly smaller on tiny phones to prevent covering text */
+  }
+  .side-left { margin-left: -20px; }
+  .side-right { margin-right: -20px; }
 }
 
-.role-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem;
-  color: #191970;
-  margin-bottom: 8px;
-}
-
-.style-tag {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: #64748b; /* Slate blue-grey */
-  display: block;
-  margin-bottom: 25px;
-  font-weight: 600;
-}
-
-.style-tag.primary-blue {
-  color: #191970;
-}
-
-.description {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  color: #475569;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.description strong {
-  color: #191970;
-}
-
-/* PALETTE COLORS */
-.shade-alignment-wrapper {
-  margin-top: auto;
-  width: 100%;
-  padding-top: 20px;
-}
-
-.shade-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.shade-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #94a3b8;
-}
-
-.gradient-bar {
-  width: 100%;
-  height: 24px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.blue-range {
-  /* Guest palette: focused on dark/navy blues */
-  background: linear-gradient(to right, #4682b4, #000080, #191970, #000033);
-}
-
-.custom-to-midnight {
-  /* Sponsors palette: slightly more expansive but still in the blue family */
-  background: linear-gradient(to right, #b0c4de, #4682b4, #191970, #05051a);
-}
-
-.thank-you-note {
-  text-align: center;
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
-  color: #191970;
-  margin-top: 30px;
-  opacity: 0.8;
-}
-
-@media (max-width: 850px) {
-  .attire-flex { flex-direction: column; }
-  .main-title { font-size: 2rem; }
-  .solid-white-card { padding: 40px 20px; }
-  .attire-panel { padding: 30px 20px; }
+/* DESKTOP REFINEMENTS */
+@media (min-width: 900px) {
+  .solid-white-card { padding: 80px 60px; }
+  .art-img.big-display { transform: scale(4.5); } /* Full impact on large screens */
+  .side-left { margin-left: -80px; }
+  .side-right { margin-right: -80px; }
+  .central-content { flex: 1.5; }
 }
 </style>

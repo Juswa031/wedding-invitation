@@ -1,233 +1,229 @@
 <template>
   <section class="wedding-hero">
-    <div class="hero-bg-container">
-      <div 
-        class="ken-burns-bg" 
-        :style="{ backgroundImage: `url(${backgroundImage})` }"
-      ></div>
-      <div class="romantic-overlay"></div>
+    <div class="banner-container">
+      <TransitionGroup name="fade-carousel">
+        <div 
+          v-for="(img, index) in backgroundImages" 
+          :key="img"
+          v-show="currentSlide === index"
+          class="banner-img" 
+          :style="{ backgroundImage: `url(${img})` }"
+        ></div>
+      </TransitionGroup>
+
+      <div class="carousel-indicators">
+        <button 
+          v-for="(img, index) in backgroundImages" 
+          :key="'dot-' + index"
+          class="dot"
+          :class="{ active: currentSlide === index }"
+          @click="goToSlide(index)"
+          aria-label="Go to slide"
+        ></button>
+      </div>
+
+      <div class="banner-overlay">
+        <div class="script-overlay">
+          <div class="names-wrapper adelia-font">
+            <span class="first-name ghost-text">Jeffrey</span>
+            <span class="ampersand-hero">&</span>
+            <span class="last-name ghost-text-delayed">Jeana</span>
+          </div>
+          <p class="tagline">pag-ibig na itinakda</p>
+        </div>
+      </div>
     </div>
-    
-    <transition name="card-fade" appear>
-      <div class="invite-card">
-        <div class="card-image-side">
-          <img :src="coupleImage" alt="Jeffrey and Jeana" />
-          <div class="image-inner-glow"></div>
+
+    <div class="invitation-section">
+      <div class="card-container">
+        <div class="polaroid-wrapper">
+          <div class="polaroid">
+            <div class="photo-inner">
+              <img :src="'https://lh3.googleusercontent.com/u/0/d/1nLhUfIpXDygtnM4a0EaygkB1OIvyrlXs'" alt="Jeffrey at Jeana" />
+            </div>
+          </div>
         </div>
 
-        <div class="card-text-side">
-          <div class="content">
-            <span class="label">Inaanyayahan po namin kayong sumaksi</span>
-            
-            <div class="couple-names">
-              <span class="name ghost-text">Jeffrey</span>
-              <span class="ampersand">at</span>
-              <span class="name ghost-text-delayed">Jeana</span>
+        <div class="invite-details">
+          <header class="invite-header">
+            <p class="invite-label">KAYO AY INAANYAYAHAN</p>
+            <br/>
+            <br/>
+            <br/>
+            <div class="script-names adelia-font">
+               Jeffrey
+              <span class="ampersand">&</span>
+               Jeana
             </div>
-            
-            <p class="announcement">Sa aming Pag-iisang Dibdib</p>
-            
+          </header>
+          <br/>
+            <br/>
+            <br/>
+          
+          <div class="invite-body">
+            <p class="marriage-status">SA AMING PAG-IISANG DIBDIB</p>
             <div class="divider"></div>
-            
-            <!-- <p class="details">Ika-24 ng Pebrero, 2026 • Antipolo City</p> -->
-            
-            <!-- <button class="rsvp-btn">Mag-RSVP</button> -->
           </div>
         </div>
       </div>
-    </transition>
+    </div>
   </section>
 </template>
 
 <script setup>
-defineProps({
-  backgroundImage: { 
-    type: String, 
-    default: 'https://lh3.googleusercontent.com/d/18QcWBk14uPF2ddye00X2nKepr5vlPFt8'
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const props = defineProps({
+  backgroundImages: { 
+    type: Array, 
+    default: () => [
+      'https://lh3.googleusercontent.com/d/1A54ELq5rqytOG9hgKkvFvTZh8kDLolM_',
+      'https://lh3.googleusercontent.com/u/0/d/1nLhUfIpXDygtnM4a0EaygkB1OIvyrlXs',
+      'https://lh3.googleusercontent.com/d/1RYcAifHGBJw96QkmY7OqJ4U9FuZngwKw'
+    ]
   },
   coupleImage: { 
     type: String, 
-    default: 'https://lh3.googleusercontent.com/u/0/d/1pdGwqdfFkXeNuYTHliatjpWqBpeQDDTK' 
+    default: 'https://lh3.googleusercontent.com/u/0/d/1nLhUfIpXDygtnM4a0EaygkB1OIvyrlXs' 
   }
+});
+
+const currentSlide = ref(0);
+let timer = null;
+
+const startCarousel = () => {
+  stopCarousel(); // Clear existing to prevent duplicates
+  timer = setInterval(() => {
+    currentSlide.value = (currentSlide.value + 1) % props.backgroundImages.length;
+  }, 5000);
+};
+
+const stopCarousel = () => {
+  if (timer) clearInterval(timer);
+};
+
+const goToSlide = (index) => {
+  currentSlide.value = index;
+  startCarousel(); // Reset timer when user manually clicks
+};
+
+onMounted(() => {
+  startCarousel();
+});
+
+onUnmounted(() => {
+  stopCarousel();
 });
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital@0;1&display=swap');
 
-.wedding-hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
+@font-face {
+  font-family: 'Adelia';
+  src: url('/fonts/adelia.ttf') format('truetype');
+}
+
+.adelia-font { font-family: 'Adelia', cursive !important; }
+
+/* --- CAROUSEL STYLES --- */
+.banner-container { 
+  width: 100%; 
+  height: 70vh; 
+  position: relative; 
+  overflow: hidden; 
+  background: #000;
+}
+
+.banner-img { 
+  position: absolute;
+  inset: 0;
+  width: 100%; 
+  height: 100%; 
+  background-size: cover; 
+  background-position: center; 
+  animation: slowZoom 20s infinite alternate; 
+}
+
+/* Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #0a0a1a; /* Midnight Blue Base */
-}
-
-.hero-bg-container {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.ken-burns-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(8px) brightness(0.6); /* Slightly darker for blue theme */
-  animation: slowZoom 40s infinite alternate ease-in-out;
-}
-
-.romantic-overlay {
-  position: absolute;
-  inset: 0;
-  /* Blue-tinted radial gradient */
-  background: radial-gradient(circle, rgba(25, 25, 112, 0.1) 0%, rgba(10, 10, 26, 0.7) 100%);
-}
-
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.12); }
-}
-
-.invite-card {
-  position: relative;
+  gap: 12px;
   z-index: 10;
-  display: flex;
-  width: 100%;
-  height: 520px;
-  background: #fcfcff; /* "Arctic White" with a hint of blue */
-  box-shadow: inset 0 0 30px rgba(255,255,255,1), 0 30px 60px rgba(0,0,0,0.5);
 }
 
-.card-image-side {
-  flex: 1.2;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-image-side img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-inner-glow {
-  position: absolute;
-  inset: 0;
-  box-shadow: inset -60px 0 80px -20px #fcfcff;
-}
-
-.card-text-side {
-  flex: 1;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.label {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  color: #5d6d7e; /* Steel Blue-Gray */
-  margin-bottom: 1.5rem;
-}
-
-.couple-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.5rem, 6vw, 5rem);
-  color: #191970; /* Midnight Blue */
-  margin-bottom: 0.5rem;
-}
-
-.ampersand {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.6rem;
-  color: #2c3e50;
-  margin: 0 15px;
-}
-
-.announcement {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  color: #1c2833;
-}
-
-.divider {
-  height: 1px;
-  width: 50px;
-  background: #7f8c8d; /* Silver-ish divider */
-  margin: 1.5rem 0;
-}
-
-.details {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: #515a6b;
-  letter-spacing: 1px;
-}
-
-.rsvp-btn {
-  margin-top: 2rem;
-  padding: 10px 35px;
-  background: transparent;
-  border: 1px solid #191970;
-  color: #191970;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
   cursor: pointer;
-  transition: 0.4s;
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
-.rsvp-btn:hover {
-  background: #191970;
-  color: white;
-  box-shadow: 0 4px 15px rgba(25, 25, 112, 0.3);
+.dot.active {
+  background: white;
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* --- GHOST REVEAL ANIMATIONS --- */
-.ghost-text {
-  display: inline-block;
-  animation: ghostReveal 2s ease-out forwards 0.5s; 
+.banner-overlay { 
+  position: absolute; 
+  inset: 0; 
+  background: rgba(0,0,0,0.3);
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 2;
+}
+
+/* Transitions */
+.fade-carousel-enter-active,
+.fade-carousel-leave-active {
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade-carousel-enter-from,
+.fade-carousel-leave-to {
   opacity: 0;
 }
 
-.ghost-text-delayed {
-  display: inline-block;
-  animation: ghostReveal 2s ease-out forwards 1s; 
-  opacity: 0;
+/* --- THE REST OF YOUR CSS --- */
+.names-wrapper { display: flex; flex-direction: column; align-items: center; color: white; }
+.first-name, .last-name { font-size: clamp(3.5rem, 12vw, 10rem); line-height: 1; text-shadow: 2px 4px 10px rgba(0,0,0,0.2); }
+.ampersand-hero { font-size: 1.5rem; margin: 10px 0; }
+.tagline { color: white; font-family: 'Montserrat'; letter-spacing: 4px; font-size: clamp(0.8rem, 3vw, 2rem); margin-top: 2rem; display: flex; justify-content: center; }
+
+.invitation-section { padding: clamp(40px, 8vw, 100px) 24px; background-color: #fdfbf7; display: flex; justify-content: center; }
+.card-container { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1000px; width: 100%; align-items: center; }
+.polaroid { background: white; padding: 15px 15px 50px 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); transform: rotate(-2deg); width: 100%; max-width: 380px; }
+.photo-inner { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #eee; }
+.photo-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.script-names { font-size: clamp(2.8rem, 8vw, 4.5rem); color: #2c3e50; line-height: 1.1; }
+.ampersand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.6em; color: #d4af37; margin: 0 10px; }
+.divider { height: 1px; width: 60px; background: #d4af37; margin: 30px auto; }
+
+@media (min-width: 850px) {
+  .card-container { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .names-wrapper { flex-direction: row; gap: 30px; }
 }
 
+@keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+.ghost-text { animation: ghostReveal 1.5s ease-out forwards 0.5s; opacity: 0; }
+.ghost-text-delayed { animation: ghostReveal 1.5s ease-out forwards 1.2s; opacity: 0; }
 @keyframes ghostReveal {
-  0% { opacity: 0; filter: blur(10px); transform: translateY(10px); }
+  0% { opacity: 0; filter: blur(8px); transform: translateY(20px); }
   100% { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-.card-fade-enter-active {
-  transition: opacity 2.5s ease;
-}
-.card-fade-enter-from {
-  opacity: 0;
-}
-
-@media (max-width: 900px) {
-  .invite-card {
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-    border-radius: 10px;
-  }
-  .card-image-side { height: 280px; }
-  .image-inner-glow { box-shadow: inset 0 -60px 80px -20px #fcfcff; }
-  .card-text-side { padding: 3rem 1.5rem; }
+.invite-details {
+  text-align: center;
 }
 </style>
