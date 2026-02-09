@@ -79,12 +79,12 @@ import { reactive } from 'vue'
 
 const parentGroups = [
   { title: 'Mga Magulang ng Lalaki', names: ['Alex Salosa', 'Alice Salosa'] },
-  { title: 'Mga Magulang ng Babae', names: ['Noel Adeva', 'Myrna Adeva'] }
+  { title: 'Mga Magulang ng Babae', names: ['Noel Adeva', 'Myra Adeva'] }
 ]
 
 const ninangs = reactive([
   { id: 0, name: 'Charito Bagon' },{ id: 1, name: 'Jean Rose Viesca' }, { id: 2, name: 'Jocelyn Polido' },
-  { id: 3, name: 'Cristina Toralba' },{ id: 4, name: 'Liezl Macarandang' }, { id: 5, name: 'Imelda Maranan' }, 
+  { id: 3, name: 'Cristina Torralba' },{ id: 4, name: 'Liezl Macarandang' }, { id: 5, name: 'Imelda Maranan' }, 
   { id: 6, name: 'Jeanette Dimla' }, { id: 7, name: 'Maricel Acuzar' }, { id: 8, name: 'Jocelyn Marquez' },
   { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 11, name: 'Norma Hayag' },
   { id: 12, name: 'Abigail Villegas' }, { id: 13, name: 'Rosalyn Tolentino' }, { id: 14, name: 'Amelita Angeles' },
@@ -93,7 +93,7 @@ const ninangs = reactive([
 
 const ninongs = reactive([
   { id: 15, name: 'Jumar Bagon' }, { id: 1, name: 'Johnwell Viesca' }, { id: 2, name: 'Cherrybril Polido' },
-  { id: 3, name: 'Dindo Toralba' }, { id: 4, name: 'Arni Macarandang' }, { id: 5, name: 'Rony Maranan' },
+  { id: 3, name: 'Dindo Torralba' }, { id: 4, name: 'Arni Macarandang' }, { id: 5, name: 'Rony Maranan' },
   { id: 6, name: 'Rogelio Dimla' }, { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' },
   { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 11, name: 'Archimedes Hayag' }, 
   { id: 12, name: 'Arnaldo Villegas' }, { id: 13, name: 'Rowel Tolentino' }, { id: 14, name: 'Manolito Sanchez' },

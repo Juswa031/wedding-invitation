@@ -10,7 +10,7 @@
 
     <div class="bible-verse-section">
       <div class="verse-wrapper">
-        <p class="verse-text adelia-font">"Mananatili ang pag-ibig, ang pag-asa, at ang pananampalataya; ngunit ang pinakamalaki sa mga ito ay ang pag-ibig."</p>
+        <p class="verse-text adelia-font">"Mananatili ang pag-ibig, ang pag-asa, at ang pananampalataya; ngunit ang pinakadakila sa mga ito ay ang pag-ibig."</p>
         <p class="verse-reference">1 Corinto 13:13</p>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="polaroid-wrapper">
           <div class="polaroid">
             <img :src="bannerImage" alt="Couple" />
-            <div class="polaroid-date">02 . 14 . 26</div> </div>
+            <div class="polaroid-date">02 . 24 . 26</div> </div>
         </div>
 
         <div class="calendar-details">
@@ -51,9 +51,9 @@
               {{ label }}
             </span>
             
-            <span class="date" v-for="n in 28" :key="n" :class="{ 'highlighted': n === 14 }">
+            <span class="date" v-for="n in 28" :key="n" :class="{ 'highlighted': n === 24 }">
               {{ n }}
-              <div v-if="n === 14" class="heart-marker">♥</div>
+              <div v-if="n === 24" class="heart-marker">♥</div>
             </span>
           </div>
 

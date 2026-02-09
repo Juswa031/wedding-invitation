@@ -8,7 +8,7 @@
       <div class="date-display">
         <span>02</span>
         <span class="gold-dot">•</span>
-        <span>14</span>
+        <span>24</span>
         <span class="gold-dot">•</span>
         <span>2026</span>
       </div>

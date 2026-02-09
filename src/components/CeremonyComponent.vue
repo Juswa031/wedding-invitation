@@ -30,7 +30,7 @@
               <p class="detail-item address">Antipolo City</p>
             </div>
             
-            <a href="https://maps.google.com" target="_blank" class="navy-button">
+            <a href="https://maps.google.com/?q=Jardin+de+Miramar" target="_blank" class="navy-button">
               Mapa
             </a>
           </div>
@@ -51,7 +51,7 @@
               <p class="detail-item address">Antipolo City</p>
             </div>
             
-            <a href="https://maps.google.com" target="_blank" class="navy-button filled">
+            <a href="https://maps.google.com/?q=Jardin+de+Miramar" target="_blank" class="navy-button filled">
               Mapa
             </a>
           </div>
