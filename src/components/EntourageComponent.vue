@@ -96,7 +96,7 @@ const ninongs = reactive([
   { id: 3, name: 'Dindo Torralba' }, { id: 4, name: 'Arni Macarandang' }, { id: 5, name: 'Rony Maranan' },
   { id: 6, name: 'Rogelio Dimla' }, { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' },
   { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 11, name: 'Archimedes Hayag' }, 
-  { id: 12, name: 'Arnaldo Villegas' }, { id: 13, name: 'Rowel Tolentino' }, { id: 14, name: 'Manolito Sanchez' },
+  { id: 12, name: 'Arnaldo Villegas' }, { id: 13, name: 'Ruel Tolentino' }, { id: 14, name: 'Manolito Sanchez' },
 ])
 
 const secondarySponsors = [
