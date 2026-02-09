@@ -28,6 +28,7 @@
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         ></iframe>
       </div>
+      <br/>
       <p class="video-caption adelia-font">Panoorin ang aming kwento</p>
     </div>
 

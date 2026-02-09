@@ -2,7 +2,7 @@
   <section class="gallery-section">
     <div class="gallery-header">
       <h2 class="gallery-title brittany-font">Jeffrey & Jeana</h2>
-      <p class="gallery-subtitle">MGA ALAALA NA HINDI MALILIMUTAN</p>
+      <p class="gallery-subtitle">Ito ang araw na inantay nang kay tagal</p>
       <div class="title-divider"></div>
     </div>
 

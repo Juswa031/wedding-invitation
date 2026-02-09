@@ -52,6 +52,7 @@
             </div>
 
             <div class="info-block">
+              <br/>
               <h3 class="role-title">Mga Panauhin</h3>
               <br/>
               <div class="message-box">
