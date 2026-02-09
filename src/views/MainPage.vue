@@ -24,7 +24,7 @@ const scrollToTop = () => {
 const isPlaying = ref(false);
 const audioRef = ref(null);
 // Palitan ang URL na ito ng link ng inyong kanta
-const audioUrl = '/audio/wedding-song.mp3';
+const audioUrl = '/public/audio/wedding-song.mp3';
 
 const toggleSound = () => {
   if (isPlaying.value) {
