@@ -23,16 +23,29 @@ const scrollToTop = () => {
 // --- SOUND LOGIC ---
 const isPlaying = ref(false);
 const audioRef = ref(null);
-// Palitan ang URL na ito ng link ng inyong kanta
-const audioUrl = '/public/audio/wedding-song.mp3';
 
-const toggleSound = () => {
+/**
+ * PATH FIX: In Vite/Vue, files in 'public' are served from the root.
+ * Removed '/public' from the path.
+ */
+const audioUrl = '/audio/wedding-song.mp3';
+
+const toggleSound = async () => {
+  if (!audioRef.value) return;
+
   if (isPlaying.value) {
     audioRef.value.pause();
+    isPlaying.value = false;
   } else {
-    audioRef.value.play().catch(e => console.log("Autoplay blocked: ", e));
+    try {
+      // Browsers require a user click (this toggle) to allow playback.
+      await audioRef.value.play();
+      isPlaying.value = true;
+    } catch (e) {
+      console.error("Playback blocked or file not found:", e);
+      isPlaying.value = false;
+    }
   }
-  isPlaying.value = !isPlaying.value;
 };
 
 onMounted(() => {
@@ -48,7 +61,12 @@ onUnmounted(() => {
   <div class="main-layout">
     <SidebarComponent />
 
-    <audio ref="audioRef" src="/public/audio/wedding-song.mp3" loop></audio>
+    <audio 
+      ref="audioRef" 
+      :src="audioUrl" 
+      loop 
+      preload="auto"
+    ></audio>
 
     <div class="floating-controls">
       <button 
@@ -90,6 +108,7 @@ onUnmounted(() => {
 </template>
 
 <style>
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
