@@ -21,13 +21,8 @@ const scrollToTop = () => {
 };
 
 // --- SOUND LOGIC ---
-const isPlaying = ref(false);
+const isPlaying = ref(false); // starts false, updated on autoplay
 const audioRef = ref(null);
-
-/**
- * PATH FIX: In Vite/Vue, files in 'public' are served from the root.
- * Removed '/public' from the path.
- */
 const audioUrl = '/audio/wedding-song.mp3';
 
 const toggleSound = async () => {
@@ -38,18 +33,27 @@ const toggleSound = async () => {
     isPlaying.value = false;
   } else {
     try {
-      // Browsers require a user click (this toggle) to allow playback.
       await audioRef.value.play();
       isPlaying.value = true;
     } catch (e) {
-      console.error("Playback blocked or file not found:", e);
+      console.warn("Playback blocked. Click PLAY button.", e);
       isPlaying.value = false;
     }
   }
 };
 
-onMounted(() => {
+onMounted(async () => {
   window.addEventListener('scroll', handleScroll);
+
+  // Attempt autoplay on page load/refresh
+  if (audioRef.value) {
+    try {
+      await audioRef.value.play();
+      isPlaying.value = true;
+    } catch (e) {
+      console.warn("Autoplay blocked by browser. Click PLAY button to start audio.");
+    }
+  }
 });
 
 onUnmounted(() => {
@@ -108,121 +112,31 @@ onUnmounted(() => {
 </template>
 
 <style>
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Your existing styles remain exactly the same */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; overflow-x: hidden; background: #fdfbf7; scroll-behavior: smooth; }
 
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  background: #fdfbf7;
-  scroll-behavior: smooth;
-}
+.floating-controls { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; }
 
-/* --- Floating Controls Container --- */
-.floating-controls {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.fab { width: 55px; height: 55px; border-radius: 50%; background: #ffffff; border: 1px solid rgba(25, 25, 112, 0.1); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; }
+.fab:hover { transform: translateY(-5px); background: #191970; }
+.fab:hover .label, .fab:hover .arrow-icon, .fab:hover .icon { color: #ffffff; }
 
-/* --- Base FAB Style --- */
-.fab {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid rgba(25, 25, 112, 0.1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
+.active-sound { background: #191970 !important; border-color: #d4af37; }
+.active-sound .label { color: #ffffff !important; }
 
-.fab:hover {
-  transform: translateY(-5px);
-  background: #191970;
-}
-
-.fab:hover .label, 
-.fab:hover .arrow-icon, 
-.fab:hover .icon {
-  color: #ffffff;
-}
-
-/* --- Sound Button Specific --- */
-.active-sound {
-  background: #191970 !important;
-  border-color: #d4af37;
-}
-
-.active-sound .label {
-  color: #ffffff !important;
-}
-
-.sound-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 15px;
-  margin-bottom: 2px;
-}
-
-.bar {
-  width: 3px;
-  height: 100%;
-  background: #d4af37;
-  animation: play-wave 0.6s infinite alternate;
-}
-
+.sound-bars { display: flex; align-items: flex-end; gap: 2px; height: 15px; margin-bottom: 2px; }
+.bar { width: 3px; height: 100%; background: #d4af37; animation: play-wave 0.6s infinite alternate; }
 .bar:nth-child(2) { animation-delay: 0.2s; }
 .bar:nth-child(3) { animation-delay: 0.4s; }
 
-@keyframes play-wave {
-  from { height: 4px; }
-  to { height: 15px; }
-}
+@keyframes play-wave { from { height: 4px; } to { height: 15px; } }
 
-/* --- Icons and Labels --- */
-.arrow-icon, .icon {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #191970;
-  line-height: 1;
-}
+.arrow-icon, .icon { font-size: 1.2rem; font-weight: bold; color: #191970; line-height: 1; }
+.label { font-size: 0.55rem; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #191970; margin-top: 2px; text-transform: uppercase; }
 
-.label {
-  font-size: 0.55rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  color: #191970;
-  margin-top: 2px;
-  text-transform: uppercase;
-}
+.fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease, transform 0.4s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; transform: translateY(20px); }
 
-/* --- Transition --- */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-@media (max-width: 480px) {
-  .floating-controls {
-    right: 15px;
-    bottom: 15px;
-  }
-}
+@media (max-width: 480px) { .floating-controls { right: 15px; bottom: 15px; } }
 </style>
