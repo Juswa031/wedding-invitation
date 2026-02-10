@@ -78,7 +78,7 @@
 import { reactive } from 'vue'
 
 const parentGroups = [
-  { title: 'Mga Magulang ng Lalaki', names: ['Alex Salosa', 'Alice Salosa'] },
+  { title: 'Mga Magulang ng Lalaki', names: ['Alex Salosa', 'Alicia Salosa'] },
   { title: 'Mga Magulang ng Babae', names: ['Noel Adeva', 'Myra Adeva'] }
 ]
 
