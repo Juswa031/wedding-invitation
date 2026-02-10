@@ -15,7 +15,7 @@
         </svg>
       </div>
       <h2 class="section-title">Salosa at Adeva</h2>
-      <h2 class="section-title">Mga Abay</h2>
+      <h2 class="section-title">Kasalan</h2>
       <div class="title-divider"></div>
     </div>
 
@@ -103,7 +103,7 @@ const ninangs = reactive([
   { id: 17, name: 'Leoncia Garcia' }, { id: 1, name: 'Jean Rose Viesca' },  { id: 5, name: 'Imelda Maranan' },
   { id: 6, name: 'Jeanette Dimla' }, { id: 7, name: 'Maricel Acuzar' }, { id: 8, name: 'Jocelyn Marquez' },
   { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 13, name: 'Rosalyn Tolentino' }, 
-  { id: 14, name: 'Amelita Angeles' },{ id: 0, name: 'Charito Bagon' }, { id: 16, name: 'Leonora Velasco' },
+  { id: 14, name: 'Amelita Angeles' }, { id: 16, name: 'Leonora Velasco' }, { id: 0, name: 'Charito Bagon' }, 
 ])
 
 const ninongs = reactive([
@@ -112,7 +112,7 @@ const ninongs = reactive([
   { id: 17, name: '' }, { id: 1, name: 'Johnwell Viesca' }, { id: 5, name: 'Rony Maranan' }, 
   { id: 6, name: 'Rogelio Dimla' },  { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' }, 
   { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 13, name: 'Ruel Tolentino' },
-  { id: 14, name: 'Manolito Sanchez' }, { id: 15, name: 'Jumar Bagon' }, { id: 17, name: '' },
+  { id: 14, name: 'Manolito Sanchez' }, { id: 17, name: '' }, { id: 15, name: 'Jumar Bagon' }
 ])
 
 const secondarySponsors = [
