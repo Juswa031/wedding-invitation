@@ -46,7 +46,9 @@
           <div class="sponsor-column">
             <h4 class="sponsor-role">Ninong</h4>
             <div class="name-list">
-              <p v-for="sponsor in ninongs" :key="sponsor.id" class="sponsor-name">G. {{ sponsor.name }}</p>
+              <p v-for="sponsor in ninongs" :key="sponsor.id" class="sponsor-name">
+                {{ sponsor.name ? 'G. ' + sponsor.name : '-' }}  
+              </p>
             </div>
           </div>
           <div class="sponsor-column">
@@ -96,22 +98,21 @@ const parentGroups = [
 ]
 
 const ninangs = reactive([
-  { id: 1, name: 'Jean Rose Viesca' }, { id: 2, name: 'Jocelyn Polido' },
-  { id: 3, name: 'Cristina Torralba' },{ id: 4, name: 'Liezl Macarandang' }, { id: 5, name: 'Imelda Maranan' }, 
+  { id: 3, name: 'Cristina Torralba' }, { id: 2, name: 'Jocelyn Polido' }, { id: 11, name: 'Norma Hayag' },
+  { id: 4, name: 'Melizza Macarandang' }, { id: 12, name: 'Abigail Villegas' }, { id: 15, name: 'Rory Gertos' },
+  { id: 17, name: 'Leoncia Garcia' }, { id: 1, name: 'Jean Rose Viesca' },  { id: 5, name: 'Imelda Maranan' },
   { id: 6, name: 'Jeanette Dimla' }, { id: 7, name: 'Maricel Acuzar' }, { id: 8, name: 'Jocelyn Marquez' },
-  { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 11, name: 'Norma Hayag' },
-  { id: 12, name: 'Abigail Villegas' }, { id: 13, name: 'Rosalyn Tolentino' }, { id: 14, name: 'Amelita Angeles' },
-  { id: 0, name: 'Charito Bagon' }, { id: 15, name: 'Rory Gertos' }, { id: 16, name: 'Leonora Velasco' }, 
-  { id: 17, name: 'Leoncia Garcia' }, 
+  { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 13, name: 'Rosalyn Tolentino' }, 
+  { id: 14, name: 'Amelita Angeles' },{ id: 0, name: 'Charito Bagon' }, { id: 16, name: 'Leonora Velasco' },
 ])
 
 const ninongs = reactive([
-  { id: 1, name: 'Johnwell Viesca' }, { id: 2, name: 'Cherrybril Polido' },
-  { id: 3, name: 'Dindo Torralba' }, { id: 4, name: 'Arni Macarandang' }, { id: 5, name: 'Rony Maranan' },
-  { id: 6, name: 'Rogelio Dimla' }, { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' },
-  { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 11, name: 'Archimedes Hayag' }, 
-  { id: 12, name: 'Arnaldo Villegas' }, { id: 13, name: 'Ruel Tolentino' }, { id: 14, name: 'Manolito Sanchez' },
-  { id: 15, name: 'Jumar Bagon' }
+  { id: 3, name: 'Dindo Torralba' }, { id: 2, name: 'Cherrybril Polido' }, { id: 11, name: 'Archimedes Hayag' },
+  { id: 4, name: 'Arni Macarandang' }, { id: 12, name: 'Arnaldo Villegas' }, { id: 16, name: '' },
+  { id: 17, name: '' }, { id: 1, name: 'Johnwell Viesca' }, { id: 5, name: 'Rony Maranan' }, 
+  { id: 6, name: 'Rogelio Dimla' },  { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' }, 
+  { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 13, name: 'Ruel Tolentino' },
+  { id: 14, name: 'Manolito Sanchez' }, { id: 15, name: 'Jumar Bagon' }, { id: 17, name: '' },
 ])
 
 const secondarySponsors = [
