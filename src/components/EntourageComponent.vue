@@ -21,6 +21,15 @@
 
     <div class="entourage-container">
       <div class="parents-section">
+        <div class="officiating-minister">
+          <div v-for="(group, index) in officiatingMinister" :key="index" class="parent-group">
+            <h3 class="subsection-title">{{ group.title }}</h3>
+            <p v-for="name in group.names" :key="name" class="parent-name">{{ name }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="parents-section">
         <div v-for="(group, index) in parentGroups" :key="index" class="parent-group">
           <h3 class="subsection-title">{{ group.title }}</h3>
           <p v-for="name in group.names" :key="name" class="parent-name">{{ name }}</p>
@@ -77,26 +86,32 @@
 <script setup>
 import { reactive } from 'vue'
 
+const officiatingMinister = [
+  { title: 'Opisyal na Ministro', names: ['Rev. Dindo Torralba'] },
+]
+
 const parentGroups = [
   { title: 'Mga Magulang ng Lalaki', names: ['Alex Salosa', 'Alicia Salosa'] },
   { title: 'Mga Magulang ng Babae', names: ['Noel Adeva', 'Myra Adeva'] }
 ]
 
 const ninangs = reactive([
-  { id: 0, name: 'Charito Bagon' },{ id: 1, name: 'Jean Rose Viesca' }, { id: 2, name: 'Jocelyn Polido' },
+  { id: 1, name: 'Jean Rose Viesca' }, { id: 2, name: 'Jocelyn Polido' },
   { id: 3, name: 'Cristina Torralba' },{ id: 4, name: 'Liezl Macarandang' }, { id: 5, name: 'Imelda Maranan' }, 
   { id: 6, name: 'Jeanette Dimla' }, { id: 7, name: 'Maricel Acuzar' }, { id: 8, name: 'Jocelyn Marquez' },
   { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 11, name: 'Norma Hayag' },
   { id: 12, name: 'Abigail Villegas' }, { id: 13, name: 'Rosalyn Tolentino' }, { id: 14, name: 'Amelita Angeles' },
-  { id: 15, name: 'Rory Gertos' }, { id: 16, name: 'Leonora Velasco' }, { id: 17, name: 'Leoncia Garcia' }, 
+  { id: 0, name: 'Charito Bagon' }, { id: 15, name: 'Rory Gertos' }, { id: 16, name: 'Leonora Velasco' }, 
+  { id: 17, name: 'Leoncia Garcia' }, 
 ])
 
 const ninongs = reactive([
-  { id: 15, name: 'Jumar Bagon' }, { id: 1, name: 'Johnwell Viesca' }, { id: 2, name: 'Cherrybril Polido' },
+  { id: 1, name: 'Johnwell Viesca' }, { id: 2, name: 'Cherrybril Polido' },
   { id: 3, name: 'Dindo Torralba' }, { id: 4, name: 'Arni Macarandang' }, { id: 5, name: 'Rony Maranan' },
   { id: 6, name: 'Rogelio Dimla' }, { id: 7, name: 'Arman Salosa' }, { id: 8, name: 'Marcelino Marquez' },
   { id: 9, name: 'Cornelio Hernandez' }, { id: 10, name: 'Benjamin Posedio Jr.' }, { id: 11, name: 'Archimedes Hayag' }, 
   { id: 12, name: 'Arnaldo Villegas' }, { id: 13, name: 'Ruel Tolentino' }, { id: 14, name: 'Manolito Sanchez' },
+  { id: 15, name: 'Jumar Bagon' }
 ])
 
 const secondarySponsors = [
@@ -209,6 +224,12 @@ const polaroids = [
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-bottom: 60px;
+}
+
+.officiating-minister {
+  grid-column: span 2;
+  text-align: center;
+  /* border: 2px solid red;   */
 }
 
 .sponsors-columns {
