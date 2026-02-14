@@ -54,7 +54,10 @@
           <div class="sponsor-column">
             <h4 class="sponsor-role">Ninang</h4>
             <div class="name-list">
-              <p v-for="sponsor in ninangs" :key="sponsor.id" class="sponsor-name">Gng. {{ sponsor.name }}</p>
+              <p v-for="sponsor in ninangs" :key="sponsor.id" class="sponsor-name">
+                <template v-if="sponsor.name != 'Pastora Tessie'">Gng.</template>
+                {{ sponsor.name }}
+              </p>
             </div>
           </div>
         </div>
@@ -100,7 +103,7 @@ const parentGroups = [
 const ninangs = reactive([
   { id: 3, name: 'Cristina Torralba' }, { id: 2, name: 'Jocelyn Polido' }, { id: 11, name: 'Norma Hayag' },
   { id: 4, name: 'Melizza Macarandang' }, { id: 12, name: 'Abigail Villegas' }, { id: 15, name: 'Rory Gertos' },
-  { id: 17, name: 'Leoncia Garcia' }, { id: 1, name: 'Jean Rose Viesca' },  { id: 5, name: 'Imelda Maranan' },
+  { id: 17, name: 'Pastora Tessie' }, { id: 1, name: 'Jean Rose Viesca' },  { id: 5, name: 'Imelda Maranan' },
   { id: 6, name: 'Jeanette Dimla' }, { id: 7, name: 'Maricel Acuzar' }, { id: 8, name: 'Jocelyn Marquez' },
   { id: 9, name: 'Rowena Hernandez' }, { id: 10, name: 'Lilibeth Posedio' }, { id: 13, name: 'Rosalyn Tolentino' }, 
   { id: 14, name: 'Amelita Angeles' }, { id: 16, name: 'Leonora Velasco' }, { id: 0, name: 'Charito Bagon' }, 
